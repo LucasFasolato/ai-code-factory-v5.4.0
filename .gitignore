@@ -8,3 +8,19 @@ dist/
 .ai/execution/logs/*.log
 .ai/execution/runs/*.tmp
 *.zip
+
+# acf:git-policy:start
+# Applied 2026-07-21T23:25:06.357Z (mode: minimal). Managed by `npm run ai -- git-policy apply`.
+.ai/events/
+.ai/history/replays/
+.ai/context-cache/
+.ai/execution/logs/
+.ai/execution/status/
+.ai/reasoning/brain/raw/
+.ai/usage/
+.ai/state.json
+.ai/locks/
+.ai/progress/
+# acf:git-policy:end
+
+.ai/reasoning/logs/
