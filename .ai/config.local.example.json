@@ -1,0 +1,23 @@
+{
+  "ai_intake": {
+    "enabled": true,
+    "provider": "claude-code",
+    "fallback_chain": [
+      "claude-code",
+      "openai",
+      "heuristic"
+    ],
+    "model": "gpt-4.1",
+    "api_key_env": "OPENAI_API_KEY",
+    "claude_code": {
+      "command": "claude",
+      "args": [
+        "-p"
+      ],
+      "prompt_mode": "stdin"
+    }
+  },
+  "brain_routing": {
+    "external_min_difficulty": "medium"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "interface": "simple CLI first: ask, next, preview, approve, status",
+  "autonomy": "high autonomy behind the scenes with hard limits and gates",
+  "design": "premium, sober, professional real-estate/product aesthetics",
+  "data_policy": "never invent real business data; explicit placeholders only",
+  "platform": "Windows + PowerShell + VS Code; Node.js only; no mandatory bash",
+  "config": "JSON for critical config; avoid fragile YAML",
+  "executors": "Codex primary, Claude fallback",
+  "stack": "Next.js frontend, NestJS backend, PostgreSQL",
+  "communication": "explain decisions, show evidence, allow approval before risky changes",
+  "updated_at": "2026-07-03T17:44:13.453Z",
+  "learned_rules": []
+}

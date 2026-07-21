@@ -1,0 +1,339 @@
+{
+  "version": "5.3.0",
+  "project": {
+    "name": "AI Code Factory Project",
+    "mode": "balanced",
+    "timezone": "America/Argentina/Buenos_Aires"
+  },
+  "interface": {
+    "simple_commands_first": true,
+    "dashboard_port": 3333
+  },
+  "token_budget": {
+    "mode": "balanced",
+    "max_reference_urls_per_task": 5,
+    "include_logs": false,
+    "include_history_limit": 3,
+    "summarize_long_files": true,
+    "prefer_context_pack": true,
+    "include_design_images_only_if_relevant": true,
+    "max_context_pack_chars": 24000
+  },
+  "brain_context": {
+    "mode": "token-efficient",
+    "use_context_router": true,
+    "use_context_cache": true,
+    "max_planner_chars": 6000,
+    "max_specialist_chars": 12000,
+    "max_summary_chars": 1600,
+    "never_send_full_standards": true,
+    "never_send_full_history": true
+  },
+  "ai_intake": {
+    "enabled": true,
+    "mode": "hybrid",
+    "provider": "claude-code",
+    "fallback_chain": [
+      "claude-code",
+      "openai",
+      "heuristic"
+    ],
+    "model": "gpt-4.1",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1/responses",
+    "timeout_ms": 60000,
+    "temperature": 0.2,
+    "confidence_threshold": 0.55,
+    "fallback_on_error": true,
+    "max_prompt_chars": 24000,
+    "write_brain_artifacts": true,
+    "claude_code": {
+      "command": "claude",
+      "args": [
+        "-p"
+      ],
+      "prompt_mode": "stdin",
+      "timeout_ms": 90000,
+      "max_retries": 1,
+      "require_json": true,
+      "sanitize_api_env": true
+    }
+  },
+  "brain_routing": {
+    "enabled": true,
+    "external_min_difficulty": "simple",
+    "require_brain_for_implementation": true,
+    "default_depth": "auto",
+    "simple_asks_skip_external": false,
+    "depth_prompt_chars": {
+      "fast": 10000,
+      "standard": 18000,
+      "deep": 28000,
+      "architect": 42000
+    },
+    "difficulty_provider": {
+      "trivial": "heuristic",
+      "simple": "claude-code",
+      "medium": "claude-code",
+      "complex": "claude-code",
+      "epic": "claude-code"
+    },
+    "difficulty_depth": {
+      "trivial": "fast",
+      "simple": "standard",
+      "medium": "standard",
+      "complex": "deep",
+      "epic": "architect"
+    },
+    "difficulty_strategy": {
+      "trivial": "direct",
+      "simple": "direct",
+      "medium": "deliberate",
+      "complex": "deliberate",
+      "epic": "tree"
+    }
+  },
+  "autonomy": {
+    "default_level": 3,
+    "allow_auto_fix": true,
+    "allow_auto_iteration": true,
+    "max_auto_iterations": 3,
+    "require_approval_for": [
+      "visual_design",
+      "database_schema",
+      "auth",
+      "payments",
+      "destructive_changes",
+      "architecture_changes",
+      "deploy",
+      "real_business_data",
+      "global_playbook_updates"
+    ]
+  },
+  "execution": {
+    "enabled": true,
+    "auth": {
+      "mode": "chatgpt",
+      "sanitize_api_env": true,
+      "require_chatgpt_login": true,
+      "blocked_env_keys": [
+        "OPENAI_API_KEY",
+        "OPENAI_ORG_ID",
+        "OPENAI_PROJECT_ID",
+        "ANTHROPIC_API_KEY",
+        "CLAUDE_API_KEY",
+        "GEMINI_API_KEY",
+        "GOOGLE_API_KEY"
+      ]
+    },
+    "primary": "codex",
+    "fallback": "claude",
+    "dry_run_when_missing_executor": true,
+    "timeout_ms": 900000,
+    "implementation_mode": "staged-for-frontend-visual",
+    "codex": {
+      "command": "codex",
+      "args": [
+        "exec",
+        "--sandbox",
+        "workspace-write",
+        "--skip-git-repo-check",
+        "--config",
+        "approval_policy=\"never\"",
+        "-C"
+      ]
+    },
+    "claude": {
+      "command": "claude",
+      "args": [
+        "-p"
+      ]
+    }
+  },
+  "usage_budget": {
+    "enabled": true,
+    "monthly_budget_usd": 10,
+    "warn_at_ratio": 0.8,
+    "hard_stop_at_ratio": 1,
+    "fallback_when_exceeded": true
+  },
+  "validation": {
+    "commands": [
+      "npm run lint",
+      "npm run typecheck",
+      "npm test",
+      "npm run build"
+    ],
+    "skip_missing_scripts": true
+  },
+  "project_bootstrap": {
+    "enabled": true,
+    "ensure_validation_scripts": true,
+    "initialize_git_if_missing": true,
+    "create_initial_commit_if_empty": true
+  },
+  "git_workflow": {
+    "enabled": true,
+    "branch_prefix": "acf",
+    "base_branch": "auto",
+    "require_git_repo": true,
+    "auto_create_branch": true,
+    "auto_commit_on_success": true,
+    "auto_merge_on_success": true,
+    "delete_branch_after_merge": false,
+    "require_clean_start": false
+  },
+  "design": {
+    "default_provider": "gpt-image",
+    "require_approval_for_frontend_visual": true,
+    "verify_provider_artifacts": true,
+    "never_fallback_to_recommended_when_user_supplied_id": true,
+    "quality": "production-mock",
+    "creativity": "creative-director",
+    "synthetic_assets": true,
+    "brand_bootstrap": true,
+    "gpt_image": {
+      "model": "gpt-image-2",
+      "api_key_env": "OPENAI_API_KEY",
+      "endpoint": "https://api.openai.com/v1/images/generations",
+      "quality": "medium",
+      "output_format": "png",
+      "desktop_size": "1536x1024",
+      "mobile_size": "1024x1536",
+      "options": 3,
+      "require_confirm": true,
+      "estimated_cost_per_image_usd": 0.05
+    },
+    "assets_required_for_production_mock": true,
+    "codex_generate_asset_pack": true,
+    "implementation_requires_real_assets": true,
+    "codex_generation_strategy": "single-option-first",
+    "codex_default_option": "option-a",
+    "codex_generate_missing_only": true,
+    "codex_artifact_strategy": "html-first",
+    "rasterize_html": true,
+    "html_renderer": null,
+    "accept_html_artifacts": true,
+    "min_png_bytes": 4096,
+    "min_html_bytes": 300,
+    "min_svg_bytes": 256,
+    "auto_fallback": true,
+    "fallback_chain": [
+      "gpt-image-codex",
+      "gpt-image-api",
+      "wireframe-mock"
+    ],
+    "providers": {
+      "manual-import": {
+        "kind": "manual-import"
+      },
+      "wireframe-mock": {
+        "kind": "wireframe-mock",
+        "options": 3,
+        "generate_mobile": true
+      },
+      "gpt-image": {
+        "kind": "gpt-image-codex",
+        "require_real_image": true,
+        "staged": true
+      },
+      "gpt-image-codex": {
+        "kind": "gpt-image-codex",
+        "require_real_image": true,
+        "staged": true
+      },
+      "gpt-image-api": {
+        "kind": "gpt-image-api"
+      },
+      "external-command": {
+        "kind": "external-command",
+        "command_env": "ACF_DESIGN_COMMAND",
+        "args_env": "ACF_DESIGN_COMMAND_ARGS",
+        "prompt_mode": "stdin"
+      }
+    }
+  },
+  "standards": {
+    "quality_profile": "production",
+    "stack": "next-nest-fullstack",
+    "frontend_target": "WCAG 2.2 AA, Core Web Vitals conscious, production UI",
+    "backend_target": "NestJS modular architecture, DTO validation, security baseline, proportional tests",
+    "dependency_policy": "approval-required-for-heavy-or-risky-dependencies"
+  },
+  "autonomous_loop": {
+    "mode": "supervised",
+    "max_reqs_per_cycle": 1,
+    "max_auto_iterations": 3,
+    "allow_low_risk_auto_approve": false,
+    "allow_medium_risk_auto_approve": false,
+    "always_require_human_for": [
+      "visual_design",
+      "auth",
+      "payments",
+      "database_schema",
+      "destructive_changes",
+      "deploy",
+      "real_business_data"
+    ]
+  },
+  "research": {
+    "default_provider": "duckduckgo-html",
+    "max_results": 5,
+    "timeout_ms": 15000
+  },
+  "components": {
+    "default_framework": "react",
+    "write_design_component_plan": true
+  },
+  "fake_data": {
+    "enabled": true,
+    "block_on_unconfirmed_real_data": true,
+    "scan_extensions": [
+      ".tsx",
+      ".ts",
+      ".jsx",
+      ".js",
+      ".html",
+      ".css",
+      ".md"
+    ],
+    "scan_dirs": [
+      "src/app",
+      "app",
+      "pages",
+      "components",
+      "public"
+    ],
+    "ignore_dirs": [
+      "node_modules",
+      ".git",
+      ".ai",
+      "dist",
+      "build",
+      ".next"
+    ],
+    "confirmed_real_data_patterns": [],
+    "allowed_placeholders": [
+      "Email pendiente",
+      "Teléfono pendiente",
+      "Telefono pendiente",
+      "Ubicación pendiente",
+      "Ubicacion pendiente",
+      "Contacto pendiente",
+      "#contacto"
+    ]
+  },
+  "evolution": {
+    "enabled": true,
+    "auto_learn_on_close": true,
+    "auto_classify_failures": true,
+    "min_repeated_failures_for_proposal": 2,
+    "allow_autonomous_playbook_updates": false
+  },
+  "dashboard": {
+    "host": "127.0.0.1",
+    "port": 3333,
+    "local_only": true
+  },
+  "previous_version": "5.2.0"
+}

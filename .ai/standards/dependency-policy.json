@@ -1,0 +1,6 @@
+{
+  "require_approval_for": [
+    "large UI kits",
+    "auth/payment/security packages"
+  ]
+}

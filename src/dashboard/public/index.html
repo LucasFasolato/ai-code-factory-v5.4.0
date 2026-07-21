@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Code Factory — Command Center</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">◆</span>
+      <span class="brand-name">AI Code Factory</span>
+      <span class="brand-version">v3.3.1 FULL · Evolution</span>
+    </div>
+    <div class="topbar-right">
+      <span id="health-pill" class="pill">health —</span>
+      <span id="active-pill" class="pill">active: —</span>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="overview">Overview</button>
+    <button class="tab" data-tab="request">Request</button>
+    <button class="tab" data-tab="history">History</button>
+    <button class="tab" data-tab="knowledge">Knowledge</button>
+  </nav>
+
+  <main>
+    <section id="tab-overview" class="tab-panel active">
+      <div class="grid">
+        <div class="card">
+          <h2>Backlog</h2>
+          <div id="backlog-list" class="list"></div>
+        </div>
+        <div class="card">
+          <h2>Project Health</h2>
+          <div id="health-list" class="list"></div>
+        </div>
+        <div class="card">
+          <h2>Suggested Next</h2>
+          <div id="suggest-list" class="list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-request" class="tab-panel">
+      <div class="card">
+        <h2 id="request-title">Select a request from Overview</h2>
+        <div id="request-meta" class="meta"></div>
+        <div id="gates-list" class="list"></div>
+        <h3>Questions</h3>
+        <pre id="request-questions" class="pre"></pre>
+        <div class="row">
+          <input id="answer-input" type="text" placeholder="Responder preguntas bloqueantes..." />
+          <button id="answer-btn" class="btn">Answer</button>
+        </div>
+        <h3>Design</h3>
+        <div id="design-info" class="meta"></div>
+        <div class="row">
+          <input id="design-option-input" type="text" placeholder="option-b" />
+          <button id="design-approve-btn" class="btn">Approve design</button>
+          <button id="visual-accept-btn" class="btn secondary">Visual accept</button>
+        </div>
+        <h3>Evidence</h3>
+        <pre id="request-evidence" class="pre"></pre>
+        <h3>Feedback</h3>
+        <div class="row">
+          <input id="feedback-input" type="text" placeholder='Ej: "no me gustan los degradados en el hero"' />
+          <button id="feedback-btn" class="btn secondary">Record feedback</button>
+        </div>
+        <div id="request-msg" class="msg"></div>
+      </div>
+    </section>
+
+    <section id="tab-history" class="tab-panel">
+      <div class="grid two">
+        <div class="card">
+          <h2>Timeline</h2>
+          <div id="history-list" class="list mono"></div>
+        </div>
+        <div class="card">
+          <h2>Evolution</h2>
+          <div id="evolution-summary" class="meta"></div>
+          <div id="evolution-requests" class="list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-knowledge" class="tab-panel">
+      <div class="grid two">
+        <div class="card">
+          <h2>Compiled Knowledge</h2>
+          <pre id="knowledge-compiled" class="pre tall"></pre>
+        </div>
+        <div class="card">
+          <h2>Learned Rules</h2>
+          <div id="learned-rules" class="list"></div>
+          <h3>Design taste</h3>
+          <pre id="design-taste" class="pre"></pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

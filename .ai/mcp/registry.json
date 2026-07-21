@@ -1,0 +1,161 @@
+{
+  "tools": [
+    {
+      "name": "filesystem",
+      "enabled": true,
+      "risk": "medium",
+      "capabilities": [
+        "read",
+        "write",
+        "list"
+      ],
+      "allowed_paths": [
+        "src",
+        "app",
+        "pages",
+        "components",
+        "tests",
+        ".ai",
+        "public"
+      ],
+      "blocked_paths": [
+        ".env",
+        ".git",
+        "node_modules"
+      ]
+    },
+    {
+      "name": "playwright",
+      "enabled": false,
+      "risk": "low",
+      "capabilities": [
+        "screenshot",
+        "visual-check",
+        "browser-test"
+      ]
+    },
+    {
+      "name": "browser-search",
+      "enabled": true,
+      "risk": "low",
+      "capabilities": [
+        "research",
+        "references",
+        "web-search"
+      ]
+    },
+    {
+      "name": "figma",
+      "enabled": false,
+      "risk": "medium",
+      "capabilities": [
+        "read-design",
+        "export-assets"
+      ]
+    },
+    {
+      "name": "image-generator",
+      "enabled": true,
+      "risk": "medium",
+      "capabilities": [
+        "design-generate",
+        "mock-wireframes",
+        "external-provider"
+      ],
+      "requires_approval_for": [
+        "real-brand-assets"
+      ]
+    },
+    {
+      "name": "component-generator",
+      "enabled": true,
+      "risk": "low",
+      "capabilities": [
+        "component-plan",
+        "ui-decomposition"
+      ]
+    },
+    {
+      "name": "gpt-image",
+      "enabled": true,
+      "risk": "medium",
+      "capabilities": [
+        "production-mockups",
+        "synthetic-assets",
+        "brand-bootstrap",
+        "codex-design-provider"
+      ],
+      "requires_approval_for": []
+    },
+    {
+      "name": "senior-reviewer",
+      "enabled": true,
+      "risk": "low",
+      "capabilities": [
+        "frontend-review",
+        "backend-review",
+        "security-review",
+        "architecture-review"
+      ]
+    },
+    {
+      "name": "autonomous-loop",
+      "enabled": true,
+      "risk": "high",
+      "capabilities": [
+        "product-scan",
+        "propose-features",
+        "cycle"
+      ],
+      "requires_approval_for": [
+        "execute",
+        "close"
+      ]
+    },
+    {
+      "name": "github",
+      "enabled": false,
+      "risk": "high",
+      "capabilities": [
+        "issues",
+        "pull-requests",
+        "commits"
+      ],
+      "requires_approval_for": [
+        "write"
+      ]
+    },
+    {
+      "name": "docs-search",
+      "enabled": false,
+      "risk": "low",
+      "capabilities": [
+        "documentation",
+        "api-reference"
+      ]
+    },
+    {
+      "name": "design-provider",
+      "enabled": true,
+      "risk": "medium",
+      "capabilities": [
+        "generate-prompt-pack",
+        "manual-import",
+        "verify-artifacts"
+      ]
+    },
+    {
+      "name": "database",
+      "enabled": false,
+      "risk": "high",
+      "capabilities": [
+        "schema-read",
+        "query-dev-db"
+      ],
+      "requires_approval_for": [
+        "write",
+        "migrate"
+      ]
+    }
+  ]
+}

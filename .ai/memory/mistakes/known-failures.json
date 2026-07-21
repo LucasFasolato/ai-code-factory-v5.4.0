@@ -1,0 +1,47 @@
+[
+  {
+    "id": "KF-001",
+    "name": "Design approval fallback bug",
+    "class": "decision",
+    "pattern": "User requested option-b but system approved option-a",
+    "prevention": "Never fallback to recommended design if user supplied an explicit option id.",
+    "gate": "approved_design_gate",
+    "test": "design-approve option-b-desktop resolves option-b"
+  },
+  {
+    "id": "KF-002",
+    "name": "Fake business data",
+    "class": "product",
+    "pattern": "System invented phone, email, location, metrics or social links",
+    "prevention": "Run fake data scanner before close and use explicit placeholders.",
+    "gate": "fake_data_gate",
+    "test": "fake data scanner detects phone/email/metrics"
+  },
+  {
+    "id": "KF-003",
+    "name": "Build green visual failure",
+    "class": "visual",
+    "pattern": "Frontend visual work closed with lint/typecheck/test/build but poor visual quality",
+    "prevention": "Require visual evidence and visual acceptance for frontend visual work.",
+    "gate": "visual_evidence_gate",
+    "test": "no close if visual acceptance missing"
+  },
+  {
+    "id": "KF-004",
+    "name": "Weak quality command",
+    "class": "planning",
+    "pattern": "quality returned static rubric instead of analyzing implementation",
+    "prevention": "Quality engine must inspect artifacts, gates and acceptance criteria.",
+    "gate": "acceptance_criteria_gate",
+    "test": "quality reads real state"
+  },
+  {
+    "id": "KF-005",
+    "name": "Bad Codex invocation",
+    "class": "executor",
+    "pattern": "Codex invoked without exec causing stdin is not a terminal",
+    "prevention": "Always invoke codex exec with args array and shell:false.",
+    "gate": "executor_status_gate",
+    "test": "executor command builder includes exec"
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "type": "backend_api",
+  "required": [
+    "contract_defined",
+    "validation_handled",
+    "error_cases_covered",
+    "tests_passed",
+    "technical_validation_passed"
+  ],
+  "cannot_close_if": [
+    "tests_failed",
+    "contract_missing",
+    "security_risk_unreviewed"
+  ]
+}

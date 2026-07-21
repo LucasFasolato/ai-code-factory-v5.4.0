@@ -1,0 +1,10 @@
+{
+  "quality_profile": "production",
+  "frontend": {
+    "framework": "Next.js App Router"
+  },
+  "backend": {
+    "framework": "NestJS"
+  },
+  "generated_by": "default-seed"
+}

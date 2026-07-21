@@ -1,0 +1,49 @@
+{
+  "name": "ai-code-factory",
+  "version": "5.4.0",
+  "description": "AI Code Factory v5.0 \u2014 Reliable Brain (JSON envelope + strict retry + raw traces), Token Economy OS (model cascade, per-REQ budgets, repo map, playbooks), Deterministic Quality Gates and diff-scoped reviews.",
+  "type": "module",
+  "bin": {
+    "ai-code-factory": "./src/cli.js"
+  },
+  "scripts": {
+    "ai": "node ./src/cli.js",
+    "test": "node --test tests/*.test.js",
+    "lint": "node ./src/cli.js doctor:syntax",
+    "typecheck": "node ./src/cli.js doctor:syntax",
+    "build": "node ./src/cli.js doctor:syntax"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "adaptive-routing",
+    "agents-md",
+    "ai",
+    "ai-intake",
+    "ask-preview",
+    "brain-doctor",
+    "brain-eval",
+    "claude",
+    "claude-code",
+    "codex",
+    "cost-report",
+    "dashboard",
+    "design-doctor",
+    "deterministic-gates",
+    "evolution",
+    "hard-gates",
+    "mcp",
+    "model-cascade",
+    "multi-brain",
+    "orchestrator-brain",
+    "playbooks",
+    "product-engineering",
+    "reasoning-intake",
+    "repo-map",
+    "structured-output",
+    "token-control",
+    "token-economy"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,17 @@
+{
+  "type": "frontend_visual",
+  "required": [
+    "technical_validation_passed",
+    "approved_design_respected",
+    "fake_data_gate_passed",
+    "acceptance_criteria_passed",
+    "responsive_review_passed",
+    "visual_acceptance_passed"
+  ],
+  "cannot_close_if": [
+    "build_failed",
+    "fake_data_detected",
+    "approved_design_missing",
+    "visual_acceptance_missing"
+  ]
+}

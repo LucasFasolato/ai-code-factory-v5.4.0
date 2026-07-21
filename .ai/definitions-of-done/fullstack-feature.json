@@ -1,0 +1,14 @@
+{
+  "type": "fullstack_feature",
+  "required": [
+    "contract_defined",
+    "frontend_done",
+    "backend_done",
+    "technical_validation_passed",
+    "smoke_validation_passed"
+  ],
+  "cannot_close_if": [
+    "contract_missing",
+    "technical_validation_failed"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "identity": {
+    "name": "AI Code Factory Project",
+    "description": "Local-first Product Engineering OS project.",
+    "principle": "Simple outside. Intelligent inside. Auditable always."
+  },
+  "stack": {
+    "frontend": "Next.js",
+    "backend": "NestJS",
+    "database": "PostgreSQL",
+    "runtime": "Node.js >=20",
+    "os": "Windows/PowerShell friendly"
+  },
+  "expected_architecture": {
+    "source_dirs": [
+      "src",
+      "app",
+      "pages",
+      "components"
+    ],
+    "test_dirs": [
+      "tests",
+      "test",
+      "__tests__"
+    ],
+    "forbidden_in_source": [
+      "hardcoded secrets",
+      "invented business data"
+    ],
+    "config_format": "json"
+  },
+  "quality_bar": {
+    "frontend_visual": "premium, disciplined, no typographic gigantism, real visual evidence",
+    "backend": "explicit contracts, validation, error cases, proportional tests",
+    "general": "no green-build-only closes, evidence-driven"
+  },
+  "must_not_do": [
+    "invent phone numbers, emails, addresses, social links",
+    "invent metrics, clients, years of experience or legal claims",
+    "implement frontend visual work without approved design",
+    "close visual work without visual acceptance",
+    "change database/auth/payments/deploy without approval"
+  ]
+}

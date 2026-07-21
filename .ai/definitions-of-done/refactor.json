@@ -1,0 +1,11 @@
+{
+  "type": "refactor",
+  "required": [
+    "behavior_preserved",
+    "technical_validation_passed"
+  ],
+  "cannot_close_if": [
+    "behavior_change_unapproved",
+    "technical_validation_failed"
+  ]
+}

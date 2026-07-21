@@ -1,0 +1,10 @@
+node_modules/
+.DS_Store
+.env
+.env.*
+!.env.example
+coverage/
+dist/
+.ai/execution/logs/*.log
+.ai/execution/runs/*.tmp
+*.zip

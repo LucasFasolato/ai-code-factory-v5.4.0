@@ -1,0 +1,12 @@
+{
+  "type": "bugfix",
+  "required": [
+    "root_cause_identified",
+    "fix_applied",
+    "technical_validation_passed"
+  ],
+  "cannot_close_if": [
+    "failure_unexplained",
+    "technical_validation_failed"
+  ]
+}
