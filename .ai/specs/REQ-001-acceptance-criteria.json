@@ -1,0 +1,16 @@
+{
+  "request_id": "REQ-001",
+  "criteria": [
+    "The implementation matches the interpreted user intent.",
+    "No fake real-world data, metrics, contact data or legal claims are introduced.",
+    "Required validation commands are executed or explicitly marked skipped with reason.",
+    "An evidence pack explains close status.",
+    "Root cause is documented or clearly inferred.",
+    "Regression coverage is added or explicitly waived.",
+    "PROJECT_TYPES enum remains closed and unchanged in membership.",
+    "A normalization step runs before project_type schema validation and maps at minimum: node-typescript-cli, typescript-cli, node-cli, cli-tool -> internal-tool.",
+    "New regression test: AI decision payload with project_type=node-typescript-cli is accepted, normalized to internal-tool, and does not trigger heuristic-fallback or brain_degraded.",
+    "Existing tests for other project_type values and work_type classifications remain green/unchanged.",
+    "No other schema, contract, or classification behavior is modified."
+  ]
+}

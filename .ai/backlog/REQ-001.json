@@ -1,0 +1,14 @@
+{
+  "id": "REQ-001",
+  "title": "Corregí un bug real del AI Intake Brain detectado usando ebook-market-lab. Conte",
+  "raw_user_ask": "Corregí un bug real del AI Intake Brain detectado usando ebook-market-lab.\n\nContexto:\nClaude respondió una decisión correcta, pero usó project_type node-typescript-cli. El schema lo rechazó porque no pertenece al enum, provocó heuristic-fallback, marcó BRAIN DEGRADED y reclasificó incorrectamente una CLI TypeScript como fullstack_feature.\n\nPara este REQ, clasificá el repositorio como:\n- project_type: existing-project\n- work_type: bugfix\n\nImplementación requerida:\n- Mantener cerrado el enum actual de PROJECT_TYPES.\n- Normalizar aliases antes de validar project_type.\n- Mapear como mínimo:\n  - node-typescript-cli\n  - typescript-cli\n  - node-cli\n  - cli-tool\n  hacia internal-tool.\n- Agregar un regression test donde una decisión AI con project_type node-typescript-cli sea aceptada y normalizada a internal-tool.\n- Verificar que no active heuristic-fallback ni brain_degraded.\n- No cambiar otros contratos ni clasificaciones.",
+  "interpreted_intent": "Fix the AI Intake Brain so project_type aliases (e.g. node-typescript-cli, typescript-cli, node-cli, cli-tool) are normalized to the closed enum value internal-tool before schema validation, preventing false heuristic-fallback / BRAIN DEGRADED / misclassification as fullstack_feature.",
+  "work_type": "bugfix",
+  "project_type": "existing-project",
+  "risk": "high",
+  "workflow": "diagnose-fix-validate",
+  "status": "implementation_ready",
+  "next_best_action": "execute",
+  "created_at": "2026-07-21T23:37:39.779Z",
+  "updated_at": "2026-07-21T23:39:46.685Z"
+}

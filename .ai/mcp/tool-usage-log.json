@@ -1,1 +1,57 @@
-[]
+[
+  {
+    "request_id": "REQ-001",
+    "event": "tool-routing",
+    "at": "2026-07-21T23:37:39.810Z",
+    "tools": [
+      {
+        "tool": "filesystem",
+        "enabled": true,
+        "risk": "medium",
+        "required": true,
+        "requires_approval_for": [],
+        "reason": "Need to inspect and write project artifacts."
+      },
+      {
+        "tool": "human-approval",
+        "enabled": false,
+        "risk": "unknown",
+        "required": false,
+        "requires_approval_for": [],
+        "reason": "High-risk or design-sensitive decision requires user approval."
+      },
+      {
+        "tool": "code_search",
+        "enabled": false,
+        "risk": "unknown",
+        "required": false,
+        "requires_approval_for": [],
+        "reason": "Recommended for bugfix."
+      },
+      {
+        "tool": "read_file",
+        "enabled": false,
+        "risk": "unknown",
+        "required": false,
+        "requires_approval_for": [],
+        "reason": "Recommended for bugfix."
+      },
+      {
+        "tool": "edit_file",
+        "enabled": false,
+        "risk": "unknown",
+        "required": false,
+        "requires_approval_for": [],
+        "reason": "Recommended for bugfix."
+      },
+      {
+        "tool": "test_runner",
+        "enabled": false,
+        "risk": "unknown",
+        "required": false,
+        "requires_approval_for": [],
+        "reason": "Recommended for bugfix."
+      }
+    ]
+  }
+]

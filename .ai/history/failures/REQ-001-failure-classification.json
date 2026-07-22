@@ -1,0 +1,10 @@
+{
+  "request_id": "REQ-001",
+  "classes": [
+    {
+      "class": "user_input_gap",
+      "reason": "Blocking info missing: database/schema approval"
+    }
+  ],
+  "generated_at": "2026-07-22T00:47:39.203Z"
+}

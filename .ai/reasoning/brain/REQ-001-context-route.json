@@ -1,0 +1,45 @@
+{
+  "request_id": "REQ-001",
+  "generated_at": "2026-07-21T23:37:13.056Z",
+  "selected_context": [
+    "project-summary.md",
+    "testing-summary.md",
+    "backend-summary.md",
+    "frontend-summary.md"
+  ],
+  "reason": "General ask: selected minimal project/product summaries.",
+  "cache_index": {
+    "generated_at": "2026-07-21T23:37:13.049Z",
+    "max_summary_chars": 1600,
+    "files": {
+      "project-summary.md": {
+        "path": ".ai/context-cache/project-summary.md",
+        "chars": 587
+      },
+      "frontend-summary.md": {
+        "path": ".ai/context-cache/frontend-summary.md",
+        "chars": 87
+      },
+      "backend-summary.md": {
+        "path": ".ai/context-cache/backend-summary.md",
+        "chars": 86
+      },
+      "security-summary.md": {
+        "path": ".ai/context-cache/security-summary.md",
+        "chars": 73
+      },
+      "testing-summary.md": {
+        "path": ".ai/context-cache/testing-summary.md",
+        "chars": 41
+      },
+      "design-summary.md": {
+        "path": ".ai/context-cache/design-summary.md",
+        "chars": 588
+      },
+      "product-summary.md": {
+        "path": ".ai/context-cache/product-summary.md",
+        "chars": 361
+      }
+    }
+  }
+}

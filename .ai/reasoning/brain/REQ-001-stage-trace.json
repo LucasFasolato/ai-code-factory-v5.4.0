@@ -1,0 +1,35 @@
+{
+  "request_id": "REQ-001",
+  "mode": "multi_step_token_efficient",
+  "generated_at": "2026-07-21T23:37:39.775Z",
+  "stages": [
+    {
+      "name": "local_triage",
+      "provider": "local",
+      "prompt_chars": 0,
+      "result": "bugfix/medium/high"
+    },
+    {
+      "name": "context_router",
+      "provider": "local",
+      "prompt_chars": 0,
+      "result": "project-summary.md, testing-summary.md, backend-summary.md, frontend-summary.md"
+    },
+    {
+      "name": "specialist_intake_brain",
+      "provider": "claude-code",
+      "prompt_chars": 7017,
+      "max_prompt_chars": 28000,
+      "result": "ai"
+    }
+  ],
+  "selected_context": [
+    "project-summary.md",
+    "testing-summary.md",
+    "backend-summary.md",
+    "frontend-summary.md"
+  ],
+  "total_external_calls": 1,
+  "fallback_reason": null,
+  "estimated_prompt_chars": 7017
+}

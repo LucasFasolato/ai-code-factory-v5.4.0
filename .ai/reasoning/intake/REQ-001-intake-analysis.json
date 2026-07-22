@@ -1,0 +1,132 @@
+{
+    "request_id":  "REQ-001",
+    "raw_user_ask":  "CorregÃ­ un bug real del AI Intake Brain detectado usando ebook-market-lab.\n\nContexto:\nClaude respondiÃ³ una decisiÃ³n correcta, pero usÃ³ project_type node-typescript-cli. El schema lo rechazÃ³ porque no pertenece al enum, provocÃ³ heuristic-fallback, marcÃ³ BRAIN DEGRADED y reclasificÃ³ incorrectamente una CLI TypeScript como fullstack_feature.\n\nPara este REQ, clasificÃ¡ el repositorio como:\n- project_type: existing-project\n- work_type: bugfix\n\nImplementaciÃ³n requerida:\n- Mantener cerrado el enum actual de PROJECT_TYPES.\n- Normalizar aliases antes de validar project_type.\n- Mapear como mÃ­nimo:\n  - node-typescript-cli\n  - typescript-cli\n  - node-cli\n  - cli-tool\n  hacia internal-tool.\n- Agregar un regression test donde una decisiÃ³n AI con project_type node-typescript-cli sea aceptada y normalizada a internal-tool.\n- Verificar que no active heuristic-fallback ni brain_degraded.\n- No cambiar otros contratos ni clasificaciones.",
+    "intent":  "fix_bug",
+    "interpreted_intent":  "Fix the AI Intake Brain so project_type aliases (e.g. node-typescript-cli, typescript-cli, node-cli, cli-tool) are normalized to the closed enum value internal-tool before schema validation, preventing false heuristic-fallback / BRAIN DEGRADED / misclassification as fullstack_feature.",
+    "project_type":  "existing-project",
+    "work_type":  "bugfix",
+    "difficulty":  "medium",
+    "scope":  "multi_file",
+    "risk":  "high",
+    "confidence":  0.83,
+    "design_first_required":  false,
+    "needs_user_questions":  true,
+    "needs_references":  true,
+    "needs_design_provider":  false,
+    "needs_visual_acceptance":  false,
+    "needs_mcp_tools":  [
+                            "filesystem",
+                            "human-approval",
+                            "code_search",
+                            "read_file",
+                            "edit_file",
+                            "test_runner"
+                        ],
+    "missing_info":  [
+                         "Exact file location of PROJECT_TYPES enum and the schema validation step that rejects unknown project_type values"
+                     ],
+    "blocking_missing_info":  [
+                                  "database/schema approval"
+                              ],
+    "assumptions_allowed":  [
+                                "state assumptions explicitly",
+                                "prefer safe defaults",
+                                "do not invent real-world claims",
+                                "Alias mapping is case-insensitive and trimmed (e.g. \u0027Node-TypeScript-CLI\u0027 also normalizes) unless existing normalization conventions in the codebase say otherwise â€” state this assumption in the implementation.",
+                                "internal-tool is confirmed to already exist as a valid enum member of PROJECT_TYPES (per the ask); implementation should verify this and fail loudly if not."
+                            ],
+    "must_not_do":  [
+                        "do not invent phone numbers",
+                        "do not invent emails",
+                        "do not invent addresses",
+                        "do not invent social links",
+                        "do not invent metrics, clients, years of experience or legal claims",
+                        "do not close without evidence",
+                        "do not bypass deterministic gates",
+                        "do not modify or widen the PROJECT_TYPES enum itself",
+                        "do not change unrelated classifications, contracts, or workflows",
+                        "do not silently swallow genuinely invalid project_type values â€” normalization only applies to the specified known aliases",
+                        "do not bypass deterministic gates or remove the heuristic-fallback safety net for truly unmapped values",
+                        "do not invent phone numbers, emails, addresses, social links, metrics, clients, years of experience or legal claims"
+                    ],
+    "recommended_workflow":  "diagnose-fix-validate",
+    "next_best_action":  "Locate the PROJECT_TYPES enum and the decision-validation path in the AI Intake Brain; insert an alias-normalization step (node-typescript-cli, typescript-cli, node-cli, cli-tool -\u003e internal-tool) executed before enum validation; add a regression test asserting an AI decision with project_type node-typescript-cli is accepted and normalized to internal-tool without triggering heuristic-fallback or brain_degraded; run the full brain test suite to confirm no other classification changed.",
+    "requires_decomposition":  false,
+    "requires_questions":  false,
+    "requires_research":  true,
+    "requires_human_approval":  true,
+    "should_implement_now":  false,
+    "questions":  [
+
+                  ],
+    "decisions":  [
+
+                  ],
+    "suggested_reqs":  [
+
+                       ],
+    "acceptance_criteria_draft":  [
+                                      "PROJECT_TYPES enum remains closed and unchanged in membership.",
+                                      "A normalization step runs before project_type schema validation and maps at minimum: node-typescript-cli, typescript-cli, node-cli, cli-tool -\u003e internal-tool.",
+                                      "New regression test: AI decision payload with project_type=node-typescript-cli is accepted, normalized to internal-tool, and does not trigger heuristic-fallback or brain_degraded.",
+                                      "Existing tests for other project_type values and work_type classifications remain green/unchanged.",
+                                      "No other schema, contract, or classification behavior is modified."
+                                  ],
+    "allowed_files_strategy":  "Exact files explicitly approved after implementation review.",
+    "allowed_files":  [
+                          "src/engines/intake-schema.js",
+                          "tests/orchestrator-brain.test.js"
+                      ],
+    "blockers":  [
+
+                 ],
+    "brain_summary":  "Real bug in AI Intake Brain: unknown project_type aliases (e.g. node-typescript-cli) hit the closed enum with no normalization, causing false heuristic-fallback, BRAIN DEGRADED, and misclassification. Fix: add an alias-normalization step before enum validation mapping node-typescript-cli/typescript-cli/node-cli/cli-tool to internal-tool, keep the enum closed, add a regression test, and verify no fallback/degraded flags fire. Single bugfix REQ, high risk due to core validation path, no approval or decomposition needed â€” proceed directly via diagnose-fix-validate.",
+    "created_at":  "2026-07-21T23:37:13.042Z",
+    "brain_depth":  "deep",
+    "reasoning_strategy":  "deliberate",
+    "brain":  {
+                  "source":  "ai",
+                  "provider":  "claude-code",
+                  "model":  "sonnet",
+                  "escalation":  null,
+                  "fallback_reason":  null,
+                  "route":  {
+                                "enabled":  true,
+                                "mode":  "hybrid",
+                                "provider":  "claude-code",
+                                "fallback_chain":  [
+                                                       "claude-code",
+                                                       "openai",
+                                                       "heuristic"
+                                                   ],
+                                "difficulty":  "medium",
+                                "risk":  "high",
+                                "depth":  "deep",
+                                "model":  "sonnet",
+                                "reasoning_strategy":  "deliberate",
+                                "use_external_brain":  true,
+                                "external_min_difficulty":  "simple",
+                                "max_prompt_chars":  28000,
+                                "projected_output_tokens":  4500,
+                                "routing_reason":  "Difficulty medium and risk high justify external Brain provider claude-code.",
+                                "token_policy":  {
+                                                     "simple_asks_skip_external":  true,
+                                                     "max_prompt_chars":  28000,
+                                                     "projected_output_tokens":  4500,
+                                                     "estimated_input_tokens":  2766,
+                                                     "estimated_output_tokens":  4500
+                                                 }
+                            },
+                  "provider_trace":  [
+                                         {
+                                             "provider":  "claude-code",
+                                             "status":  "success",
+                                             "model":  "sonnet",
+                                             "duration_ms":  26706,
+                                             "repair_used":  false,
+                                             "extracted_json":  false
+                                         }
+                                     ],
+                  "generated_at":  "2026-07-21T23:37:39.774Z"
+              }
+}

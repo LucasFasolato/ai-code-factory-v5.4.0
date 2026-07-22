@@ -1,0 +1,136 @@
+{
+  "request_id": "REQ-001",
+  "ask": "Corregí un bug real del AI Intake Brain detectado usando ebook-market-lab.\n\nContexto:\nClaude respondió una decisión correcta, pero usó project_type node-typescript-cli. El schema lo rechazó porque no pertenece al enum, provocó heuristic-fallback, marcó BRAIN DEGRADED y reclasificó incorrectamente una CLI TypeScript como fullstack_feature.\n\nPara este REQ, clasificá el repositorio como:\n- project_type: existing-project\n- work_type: bugfix\n\nImplementación requerida:\n- Mantener cerrado el enum actual de PROJECT_TYPES.\n- Normalizar aliases antes de validar project_type.\n- Mapear como mínimo:\n  - node-typescript-cli\n  - typescript-cli\n  - node-cli\n  - cli-tool\n  hacia internal-tool.\n- Agregar un regression test donde una decisión AI con project_type node-typescript-cli sea aceptada y normalizada a internal-tool.\n- Verificar que no active heuristic-fallback ni brain_degraded.\n- No cambiar otros contratos ni clasificaciones.",
+  "generated_at": "2026-07-21T23:37:13.056Z",
+  "mode": "token-efficient-routed-context",
+  "heuristic_preanalysis": {
+    "request_id": "REQ-001",
+    "raw_user_ask": "Corregí un bug real del AI Intake Brain detectado usando ebook-market-lab.\n\nContexto:\nClaude respondió una decisión correcta, pero usó project_type node-typescript-cli. El schema lo rechazó porque no pertenece al enum, provocó heuristic-fallback, marcó BRAIN DEGRADED y reclasificó incorrectamente una CLI TypeScript como fullstack_feature.\n\nPara este REQ, clasificá el repositorio como:\n- project_type: existing-project\n- work_type: bugfix\n\nImplementación requerida:\n- Mantener cerrado el enum actual de PROJECT_TYPES.\n- Normalizar aliases antes de validar project_type.\n- Mapear como mínimo:\n  - node-typescript-cli\n  - typescript-cli\n  - node-cli\n  - cli-tool\n  hacia internal-tool.\n- Agregar un regression test donde una decisión AI con project_type node-typescript-cli sea aceptada y normalizada a internal-tool.\n- Verificar que no active heuristic-fallback ni brain_degraded.\n- No cambiar otros contratos ni clasificaciones.",
+    "interpreted_intent": "Diagnose and fix a reported problem: Corregí un bug real del AI Intake Brain detectado usando ebook-market-lab. Contexto: Claude respondió una decisión correcta, pero usó project_type node-typescript-cli. El schema lo rechazó porque no pertenece al enum, provocó heuristic-fallback, marcó BRAIN DEGRADED y reclasificó incorrectamente una CLI TypeScript como fullstack_feature. Para este REQ, clasificá el repositorio como: - project_type: existing-project - work_type: bugfix Implementación requerida: - Mantener cerrado el enum actual de PROJECT_TYPES. - Normalizar aliases antes de validar project_type. - Mapear como mínimo: - node-typescript-cli - typescript-cli - node-cli - cli-tool hacia internal-tool. - Agregar un regression test donde una decisión AI con project_type node-typescript-cli sea aceptada y normalizada a internal-tool. - Verificar que no active heuristic-fallback ni brain_degraded. - No cambiar otros contratos ni clasificaciones.",
+    "work_type": "bugfix",
+    "project_type": "existing-project",
+    "difficulty": "medium",
+    "risk": "high",
+    "confidence": 0.75,
+    "design_first_required": false,
+    "recommended_workflow": "diagnose-fix-validate",
+    "missing_info": [],
+    "blocking_missing_info": [
+      "database/schema approval"
+    ],
+    "must_not_do": [
+      "do not invent phone numbers",
+      "do not invent emails",
+      "do not invent addresses",
+      "do not invent social links",
+      "do not invent metrics, clients, years of experience or legal claims",
+      "do not close without evidence",
+      "do not bypass deterministic gates"
+    ],
+    "assumptions_allowed": [
+      "state assumptions explicitly",
+      "prefer safe defaults",
+      "do not invent real-world claims"
+    ]
+  },
+  "brain_route": {
+    "enabled": true,
+    "mode": "hybrid",
+    "provider": "claude-code",
+    "fallback_chain": [
+      "claude-code",
+      "openai",
+      "heuristic"
+    ],
+    "difficulty": "medium",
+    "risk": "high",
+    "depth": "deep",
+    "model": "sonnet",
+    "reasoning_strategy": "deliberate",
+    "use_external_brain": true,
+    "external_min_difficulty": "simple",
+    "max_prompt_chars": 28000,
+    "projected_output_tokens": "[REDACTED]",
+    "routing_reason": "Difficulty medium and risk high justify external Brain provider claude-code.",
+    "token_policy": "[REDACTED]"
+  },
+  "selected_context": [
+    "project-summary.md",
+    "testing-summary.md",
+    "backend-summary.md",
+    "frontend-summary.md"
+  ],
+  "summaries": {
+    "project-summary.md": "# Project Summary\n\nName: AI Code Factory Project\nStack: frontend=Next.js; backend=NestJS; db=PostgreSQL\nRuntime: Node.js >=20\n\nMust not do:\n- invent phone numbers, emails, addresses, social links\n- invent metrics, clients, years of experience or legal claims\n- implement frontend visual work without approved design\n- close visual work without visual acceptance\n- change database/auth/payments/deploy without approval\n\nQuality bar:\n- Frontend: premium, disciplined, no typographic gigantism, real visual evidence\n- Backend: explicit contracts, validation, error cases, proportional tests\n",
+    "testing-summary.md": "# Testing Conventions\nRisk-based testing.\n",
+    "backend-summary.md": "# Backend Conventions\nRun `npm run ai -- standards init` to regenerate full standards.\n",
+    "frontend-summary.md": "# Frontend Conventions\nRun `npm run ai -- standards init` to regenerate full standards.\n"
+  },
+  "locked_constraints": [],
+  "standards_profile": "unknown",
+  "supported_workflows": [
+    "design-first",
+    "backend-contract-first",
+    "split-contract-first",
+    "product-epic-decomposition",
+    "diagnose-fix-validate",
+    "behavior-preserving-refactor",
+    "research-brief",
+    "direct-patch-with-validation",
+    "standard-intake"
+  ],
+  "hard_rules": [
+    "Brain decides workflow, risk, questions, decomposition and next action only.",
+    "Brain never executes code, approves changes, closes requests or bypasses gates.",
+    "Frontend visual work requires design-first and cannot close without visual acceptance.",
+    "High-risk database/auth/payment/deploy/destructive changes require explicit approval.",
+    "Synthetic/demo content is allowed only when explicitly labelled; never invent real claims.",
+    "Large product asks must be decomposed into closable REQs."
+  ],
+  "cache_index": {
+    "generated_at": "2026-07-21T23:37:13.049Z",
+    "max_summary_chars": 1600,
+    "files": {
+      "project-summary.md": {
+        "path": ".ai/context-cache/project-summary.md",
+        "chars": 587
+      },
+      "frontend-summary.md": {
+        "path": ".ai/context-cache/frontend-summary.md",
+        "chars": 87
+      },
+      "backend-summary.md": {
+        "path": ".ai/context-cache/backend-summary.md",
+        "chars": 86
+      },
+      "security-summary.md": {
+        "path": ".ai/context-cache/security-summary.md",
+        "chars": 73
+      },
+      "testing-summary.md": {
+        "path": ".ai/context-cache/testing-summary.md",
+        "chars": 41
+      },
+      "design-summary.md": {
+        "path": ".ai/context-cache/design-summary.md",
+        "chars": 588
+      },
+      "product-summary.md": {
+        "path": ".ai/context-cache/product-summary.md",
+        "chars": 361
+      }
+    }
+  },
+  "compiled_knowledge": "",
+  "design_taste": "",
+  "engineering_taste": "",
+  "backlog": [],
+  "brain_context_policy": {
+    "depth": "deep",
+    "strategy": "deliberate",
+    "max_prompt_chars": 24000,
+    "secrets_redacted": true,
+    "source_files_not_included": true,
+    "note": "Brain receives summaries and safe project metadata, not .env contents, secrets, full logs, or complete source files."
+  }
+}
