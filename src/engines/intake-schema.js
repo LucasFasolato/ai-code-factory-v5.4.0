@@ -23,6 +23,13 @@ export const PROJECT_TYPES = [
   'unknown'
 ];
 
+const PROJECT_TYPE_ALIASES = new Map([
+  ['node-typescript-cli', 'internal-tool'],
+  ['typescript-cli', 'internal-tool'],
+  ['node-cli', 'internal-tool'],
+  ['cli-tool', 'internal-tool']
+]);
+
 export const DIFFICULTIES = ['trivial', 'simple', 'medium', 'complex', 'epic'];
 export const SCOPES = ['single_file', 'single_feature', 'multi_file', 'backend_slice', 'frontend_slice', 'fullstack_slice', 'product_epic', 'unknown'];
 export const RISKS = ['low', 'medium', 'high', 'critical'];
@@ -151,7 +158,7 @@ export function normalizeBrainDecision(value, errors = []) {
   const out = { ...value };
   out.intent = asString(out.intent);
   out.interpreted_intent = asString(out.interpreted_intent || out.intent);
-  out.project_type = enumValue(out.project_type, PROJECT_TYPES, 'unknown', errors, 'project_type');
+  out.project_type = enumValue(normalizeProjectType(out.project_type), PROJECT_TYPES, 'unknown', errors, 'project_type');
   out.work_type = enumValue(out.work_type, WORK_TYPES, 'general', errors, 'work_type');
   out.difficulty = enumValue(out.difficulty, DIFFICULTIES, 'medium', errors, 'difficulty');
   out.scope = enumValue(out.scope, SCOPES, 'unknown', errors, 'scope');
@@ -184,6 +191,10 @@ export function normalizeBrainDecision(value, errors = []) {
   if (!out.intent) errors.push('intent is required');
   if (!out.interpreted_intent) errors.push('interpreted_intent is required');
   return out;
+}
+
+function normalizeProjectType(value) {
+  return PROJECT_TYPE_ALIASES.get(value) || value;
 }
 
 function normalizeQuestions(items) {

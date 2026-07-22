@@ -51,6 +51,33 @@ function mockEpicDecision() {
   };
 }
 
+function mockCliAliasDecision() {
+  return {
+    ...mockEpicDecision(),
+    intent: 'Fix a TypeScript CLI bug',
+    interpreted_intent: 'Fix a bug in an existing TypeScript CLI project',
+    project_type: 'node-typescript-cli',
+    work_type: 'bugfix',
+    difficulty: 'medium',
+    scope: 'multi_file',
+    risk: 'high',
+    should_implement_now: true,
+    requires_questions: false,
+    requires_decomposition: false,
+    design_first_required: false,
+    requires_human_approval: false,
+    needs_visual_acceptance: false,
+    missing_info: [],
+    blocking_missing_info: [],
+    questions: [],
+    decisions: [],
+    suggested_reqs: [],
+    suggested_workflow: 'diagnose-fix-validate',
+    next_best_action: 'implement the scoped bugfix',
+    brain_summary: 'This is a scoped bugfix in an internal CLI tool.'
+  };
+}
+
 
 
 function mockSmallVisualOvercautiousDecision() {
@@ -116,6 +143,18 @@ test('AI Intake Brain consumes structured AI decision and writes brain artifacts
     assert.ok(intake.suggested_reqs.length >= 2);
     assert.ok(fs.existsSync(requestPaths(root, 'REQ-001').brainSummary));
     assert.ok(readText(requestPaths(root, 'REQ-001').brainDecisionLog).includes('Create epic roadmap'));
+  } finally { cleanup(root); }
+});
+
+test('AI Intake Brain normalizes known CLI project_type aliases without degrading', async () => {
+  const root = makeTempProject();
+  try {
+    const config = loadConfig(root);
+    const intake = await analyzeAskWithBrain(root, 'Fix a bug in this TypeScript CLI', 'REQ-CLI', config, { mockDecision: mockCliAliasDecision() });
+    assert.equal(intake.project_type, 'internal-tool');
+    assert.equal(intake.work_type, 'bugfix');
+    assert.equal(intake.brain.source, 'mock-ai');
+    assert.equal(intake.brain.brain_degraded ?? false, false);
   } finally { cleanup(root); }
 });
 

@@ -1,0 +1,63 @@
+{
+  "request_id": "REQ-001",
+  "summary": "11/11 passed, 2 warning",
+  "criteria": [
+    {
+      "text": "The implementation matches the interpreted user intent.",
+      "status": "passed",
+      "evidence": "Criterion recorded; no automated contradiction found."
+    },
+    {
+      "text": "No fake real-world data, metrics, contact data or legal claims are introduced.",
+      "status": "passed",
+      "evidence": "Fake data scanner is evaluated by a dedicated gate."
+    },
+    {
+      "text": "Required validation commands are executed or explicitly marked skipped with reason.",
+      "status": "warning",
+      "evidence": "Technical validation is evaluated by a dedicated gate."
+    },
+    {
+      "text": "An evidence pack explains close status.",
+      "status": "warning",
+      "evidence": "Evidence pack generation is evaluated separately."
+    },
+    {
+      "text": "Root cause is documented or clearly inferred.",
+      "status": "passed",
+      "evidence": "Criterion recorded; no automated contradiction found."
+    },
+    {
+      "text": "Regression coverage is added or explicitly waived.",
+      "status": "passed",
+      "evidence": "Criterion recorded; no automated contradiction found."
+    },
+    {
+      "text": "PROJECT_TYPES enum remains closed and unchanged in membership.",
+      "status": "passed",
+      "evidence": "Criterion recorded; no automated contradiction found."
+    },
+    {
+      "text": "A normalization step runs before project_type schema validation and maps at minimum: node-typescript-cli, typescript-cli, node-cli, cli-tool -> internal-tool.",
+      "status": "passed",
+      "evidence": "Criterion recorded; no automated contradiction found."
+    },
+    {
+      "text": "New regression test: AI decision payload with project_type=node-typescript-cli is accepted, normalized to internal-tool, and does not trigger heuristic-fallback or brain_degraded.",
+      "status": "passed",
+      "evidence": "Criterion recorded; no automated contradiction found."
+    },
+    {
+      "text": "Existing tests for other project_type values and work_type classifications remain green/unchanged.",
+      "status": "passed",
+      "evidence": "Criterion recorded; no automated contradiction found."
+    },
+    {
+      "text": "No other schema, contract, or classification behavior is modified.",
+      "status": "passed",
+      "evidence": "Criterion recorded; no automated contradiction found."
+    }
+  ],
+  "close_allowed": true,
+  "generated_at": "2026-07-22T00:47:39.180Z"
+}

@@ -1,0 +1,17 @@
+{
+  "request_id": "REQ-001",
+  "can_proceed": false,
+  "proceed_mode": "needs_input",
+  "decision_confidence": 0.83,
+  "autonomy_level": 3,
+  "should_split": false,
+  "should_research": true,
+  "should_design_first": false,
+  "should_auto_iterate": true,
+  "human_approval_required": true,
+  "human_approval_reasons": [
+    "database_schema"
+  ],
+  "reason": "The request is classified as bugfix. Blocking or gate-controlled items: database/schema approval. High-risk area requires human approval.",
+  "created_at": "2026-07-21T23:37:39.796Z"
+}
